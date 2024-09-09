@@ -23,6 +23,8 @@ public:
 
   T pop();
 
+  T peek(); // Nueva función para obtener el elemento en el tope sin eliminarlo
+
   bool esVacia();
 };
 
@@ -37,13 +39,15 @@ Pila<T>::Pila()
 }
 
 /**
- * Destructor de la clase Lista, se encarga de liberar la memoria de todos los
- * nodos utilizados en la lista
+ * Destructor de la clase Pila, se encarga de liberar la memoria de todos los
+ * nodos utilizados en la pila
  * @tparam T
  */
 template <class T>
-Pila<T>::~Pila() {
-  while(!esVacia()){
+Pila<T>::~Pila()
+{
+  while (!esVacia())
+  {
     pop();
   }
 
@@ -74,7 +78,8 @@ void Pila<T>::push(T dato)
 template <class T>
 T Pila<T>::pop()
 {
-  if(esVacia()){
+  if (esVacia())
+  {
     throw 400;
   }
 
@@ -84,6 +89,22 @@ T Pila<T>::pop()
 
   delete aBorrar;
   return dato;
+}
+
+/**
+ * Obtiene el dato en el tope de la pila sin eliminarlo
+ * @tparam T
+ * @return dato almacenado en el tope
+ */
+template <class T>
+T Pila<T>::peek()
+{
+  if (esVacia())
+  {
+    throw 400;
+  }
+
+  return tope->getDato();
 }
 
 /**
